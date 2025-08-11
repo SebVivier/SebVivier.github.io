@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Atelier Petites Mains",
+  title: "Menchi's Touch",
   description: "Doudous & couvertures cousus main avec amour",
 };
 

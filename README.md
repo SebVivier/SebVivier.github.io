@@ -1,4 +1,4 @@
-# Atelier Petites Mains – GitHub Pages (Next.js static export)
+# Menchi's Touch – GitHub Pages (Next.js static export)
 
 **Stack**: Next.js (App Router) + Tailwind + framer-motion + lucide-react  
 Deployment: GitHub Pages via Actions (static export to `/out`).

@@ -9,14 +9,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 const BRAND = {
-  name: "Atelier Petites Mains",
+  name: "Menchi's Touch",
   tagline: "Doudous & couvertures cousus main avec amour",
 };
 
 const CONTACT_EMAIL = "contact@atelier-petites-mains.fr"; // change to yours
 
 const SOCIALS = {
-  instagram: "https://www.instagram.com/",
+  instagram: "https://www.instagram.com/ambre7338",
 };
 
 const CATEGORIES = [
