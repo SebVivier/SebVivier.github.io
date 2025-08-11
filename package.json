@@ -1,11 +1,10 @@
 {
   "name": "atelier-fait-main",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next export",
     "start": "next start"
   },
   "dependencies": {

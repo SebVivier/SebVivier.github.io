@@ -22,3 +22,9 @@ npm run build && npm run export
 ## Customize
 - Update `CONTACT_EMAIL` and `BRAND` in `app/page.tsx`.
 - Replace placeholder images with your photos (put them into `/public` and use `/photo.jpg`).
+
+# Update: Next.js static export change
+
+- Removed `next export`. With Next 14 + App Router, setting `output: 'export'` in `next.config.js`
+  makes `next build` generate static files directly into `/out`.
+- GitHub Actions workflow now runs only `npm run build` and uploads `/out`.
