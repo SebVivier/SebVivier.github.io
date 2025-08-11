@@ -2,7 +2,7 @@
 
 import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Instagram, ShoppingBag, Phone, MapPin, Star, Sparkles } from "lucide-react";
+import { Mail, Instagram, ShoppingBag, Phone, MapPin, Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,12 +11,13 @@ import { Textarea } from "@/components/ui/textarea";
 const BRAND = {
   name: "Menchi's Touch",
   tagline: "Doudous & couvertures cousus main avec amour",
+  logo: "/logo.svg" // ← remplace par /logo.png si tu préfères
 };
 
-const CONTACT_EMAIL = "ambre.trevisan@yahoo.com"; // change to yours
+const CONTACT_EMAIL = "ambre.trevisan@yahoo.com";
 
 const SOCIALS = {
-  instagram: "https://www.instagram.com/ambre7338",
+  instagram: "https://www.instagram.com/",
 };
 
 const CATEGORIES = [
@@ -26,21 +27,6 @@ const CATEGORIES = [
   { key: "accessoire", label: "Accessoires" },
 ];
 
-function placeholderPattern(bg = "#fde68a", dot = "#fef3c7") {
-  const svg = encodeURIComponent(`
-    <svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'>
-      <defs>
-        <pattern id='dots' x='0' y='0' width='20' height='20' patternUnits='userSpaceOnUse'>
-          <circle cx='3' cy='3' r='3' fill='${dot}'/>
-        </pattern>
-      </defs>
-      <rect width='100%' height='100%' fill='${bg}'/>
-      <rect width='100%' height='100%' fill='url(#dots)' opacity='0.45'/>
-    </svg>
-  `);
-  return `data:image/svg+xml;charset=utf-8,${svg}`;
-}
-
 const PRODUCTS = [
   {
     id: "p1",
@@ -48,8 +34,9 @@ const PRODUCTS = [
     desc: "Coton bio ultra-doux, oreilles nouées pour les petites mains.",
     price: 28,
     category: "doudou",
-    image: placeholderPattern("#fde68a", "#fef3c7"),
+    image: "/products/doudou-lapin.svg",
     tags: ["coton bio", "lavable"],
+    alt: "Doudou lapin cousu main couleur crème"
   },
   {
     id: "p2",
@@ -57,8 +44,9 @@ const PRODUCTS = [
     desc: "Patchwork de tissus certifiés OEKO-TEX®.",
     price: 59,
     category: "couverture",
-    image: placeholderPattern("#a7f3d0", "#d1fae5"),
+    image: "/products/couverture-etoiles.svg",
     tags: ["patchwork", "oeko-tex"],
+    alt: "Couverture pour berceau avec motif étoiles"
   },
   {
     id: "p3",
@@ -66,8 +54,9 @@ const PRODUCTS = [
     desc: "Broderie personnalisable au prénom de l'enfant.",
     price: 32,
     category: "doudou",
-    image: placeholderPattern("#bfdbfe", "#dbeafe"),
+    image: "/products/ourson-sourire.svg",
     tags: ["personnalisable"],
+    alt: "Doudou ourson beige avec sourire brodé"
   },
   {
     id: "p4",
@@ -75,8 +64,9 @@ const PRODUCTS = [
     desc: "Légère et chaude, parfaite pour la poussette.",
     price: 64,
     category: "couverture",
-    image: placeholderPattern("#fecaca", "#fee2e2"),
+    image: "/products/couverture-nomade.svg",
     tags: ["poussette", "chaude"],
+    alt: "Couverture nomade avec motifs arc-en-ciel"
   },
   {
     id: "p5",
@@ -84,31 +74,19 @@ const PRODUCTS = [
     desc: "Deux motifs, une fixation facile par pression.",
     price: 16,
     category: "accessoire",
-    image: placeholderPattern("#ddd6fe", "#ede9fe"),
+    image: "/products/bavoir-reversible.svg",
     tags: ["réversible"],
+    alt: "Bavoir réversible pour bébé avec deux motifs"
   },
 ];
-
-function Doodle() {
-  return (
-    <svg aria-hidden="true" className="absolute inset-0 -z-10 h-full w-full" viewBox="0 0 800 600">
-      <g opacity="0.15">
-        <path d="M50,150 C150,50 250,250 350,150 S550,50 650,150" fill="none" stroke="currentColor" strokeWidth="6" className="text-pink-300"/>
-        <path d="M100,450 C200,350 300,550 400,450 S600,350 700,450" fill="none" stroke="currentColor" strokeWidth="6" className="text-indigo-300"/>
-        <circle cx="120" cy="80" r="14" className="fill-amber-300"/>
-        <circle cx="740" cy="520" r="10" className="fill-emerald-300"/>
-      </g>
-    </svg>
-  );
-}
 
 function Header() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/80 border-b border-amber-100">
       <div className="mx-auto max-w-6xl px-4 py-3 flex items-center gap-4">
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-2xl bg-amber-200 grid place-items-center shadow">
-            <Sparkles className="h-5 w-5"/>
+          <div className="h-10 w-10 rounded-2xl bg-white grid place-items-center shadow overflow-hidden border">
+            <img src={BRAND.logo} alt={`${BRAND.name} logo`} className="h-10 w-10 object-contain" />
           </div>
           <div>
             <p className="text-xl font-semibold tracking-tight">{BRAND.name}</p>
@@ -131,7 +109,6 @@ function Header() {
 function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <Doodle />
       <div className="mx-auto max-w-6xl px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
@@ -155,7 +132,7 @@ function Hero() {
             <div className="grid grid-cols-2 gap-4 h-full">
               {PRODUCTS.slice(0,4).map((p) => (
                 <div key={p.id} className="rounded-2xl overflow-hidden bg-white/70 backdrop-blur border">
-                  <img src={p.image} alt="Motif tissu" className="h-full w-full object-cover"/>
+                  <img src={p.image} alt={p.alt} className="h-full w-full object-cover"/>
                 </div>
               ))}
             </div>
@@ -180,9 +157,9 @@ function ProductGallery() {
           <p className="text-neutral-600">Chaque pièce est cousue à la main dans notre atelier.</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          {CATEGORIES.map(c => (
-            <Button key={c.key} variant={filter === c.key ? "default" : "outline"} onClick={() => setFilter(c.key)} className="rounded-2xl">
-              {c.label}
+          {["all","doudou","couverture","accessoire"].map(c => (
+            <Button key={c} variant={filter === c ? "default" : "outline"} onClick={() => setFilter(c)} className="rounded-2xl">
+              {CATEGORIES.find(x=>x.key===c)?.label ?? c}
             </Button>
           ))}
         </div>
@@ -193,7 +170,7 @@ function ProductGallery() {
           <motion.div key={p.id} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.03 }}>
             <Card className="rounded-3xl overflow-hidden border-amber-100 shadow-sm hover:shadow-md transition">
               <div className="relative">
-                <img src={p.image} alt={p.name} className="h-48 w-full object-cover"/>
+                <img src={p.image} alt={p.alt} className="h-48 w-full object-cover"/>
                 <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-white/90 px-3 py-1 text-xs border">
                   <ShoppingBag className="h-3 w-3"/> {p.category}
                 </span>
@@ -226,7 +203,7 @@ function About() {
   return (
     <section id="apropos" className="mx-auto max-w-6xl px-4 py-16">
       <div className="grid lg:grid-cols-2 gap-10 items-center">
-        <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+        <div>
           <h2 className="text-3xl font-bold">À propos de l'atelier</h2>
           <p className="mt-3 text-neutral-700">
             Nous créons des doudous et des couvertures pour enfants, avec une attention particulière au confort et à la sécurité.
@@ -245,13 +222,13 @@ function About() {
               </li>
             ))}
           </ul>
-        </motion.div>
-        <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-          <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border bg-white shadow">
-            <img src={placeholderPattern("#fef9c3", "#fde68a")} alt="Atelier couture" className="h-full w-full object-cover"/>
-            <div className="absolute bottom-3 right-3 rounded-2xl bg-white/90 px-3 py-2 text-xs border">Atelier & tissus</div>
+        </div>
+        <div>
+          <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border bg-white shadow grid place-items-center">
+            <img src={BRAND.logo} alt={`${BRAND.name} logo grand`} className="max-h-full max-w-full object-contain p-8"/>
+            <div className="absolute bottom-3 right-3 rounded-2xl bg-white/90 px-3 py-2 text-xs border">Notre logo</div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -265,13 +242,12 @@ function Contact() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const subject = encodeURIComponent(`Demande depuis le site – ${name || "Sans nom"}`);
-    const body = encodeURIComponent(`Bonjour,\\n\\n${message}\\n\\nNom: ${name}\\nEmail: ${email}`);
+    const body = encodeURIComponent(`Bonjour,\n\n${message}\n\nNom: ${name}\nEmail: ${email}`);
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   }
 
   return (
     <section id="contact" className="relative overflow-hidden">
-      <Doodle />
       <div className="mx-auto max-w-6xl px-4 py-16">
         <div className="grid md:grid-cols-2 gap-10 items-start">
           <div>
@@ -335,7 +311,7 @@ function Footer() {
         <div>
           <p className="font-semibold">Suivre</p>
           <ul className="mt-2 space-y-1">
-            <li><a className="inline-flex items-center gap-2 hover:underline" href={SOCIALS.instagram}><Instagram className="h-4 w-4"/> Instagram</a></li>
+            <li><a className="inline-flex items-center gap-2 hover:underline" href={SOCIALS.instagram}><span className="i">📷</span> Instagram</a></li>
           </ul>
         </div>
       </div>

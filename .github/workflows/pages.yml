@@ -24,8 +24,7 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm install
-      - run: npm run build        # 'output: export' makes Next put static files into /out
-      - run: ls -la out || true   # helpful debug
+      - run: npm run build
       - run: touch out/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:

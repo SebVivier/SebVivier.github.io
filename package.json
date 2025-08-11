@@ -1,6 +1,6 @@
 {
-  "name": "atelier-fait-main",
-  "version": "1.0.2",
+  "name": "menchis-touch",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
