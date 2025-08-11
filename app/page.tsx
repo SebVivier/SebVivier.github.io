@@ -93,8 +93,8 @@ function Doodle() {
   return (
     <svg aria-hidden="true" className="absolute inset-0 -z-10 h-full w-full" viewBox="0 0 800 600">
       <g opacity="0.15">
-        <path dName="wave1" d="M50,150 C150,50 250,250 350,150 S550,50 650,150" fill="none" stroke="currentColor" strokeWidth="6" className="text-pink-300"/>
-        <path dName="wave2" d="M100,450 C200,350 300,550 400,450 S600,350 700,450" fill="none" stroke="currentColor" strokeWidth="6" className="text-indigo-300"/>
+        <path d="M50,150 C150,50 250,250 350,150 S550,50 650,150" fill="none" stroke="currentColor" strokeWidth="6" className="text-pink-300"/>
+        <path d="M100,450 C200,350 300,550 400,450 S600,350 700,450" fill="none" stroke="currentColor" strokeWidth="6" className="text-indigo-300"/>
         <circle cx="120" cy="80" r="14" className="fill-amber-300"/>
         <circle cx="740" cy="520" r="10" className="fill-emerald-300"/>
       </g>

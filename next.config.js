@@ -2,6 +2,6 @@
 const nextConfig = {
   output: 'export',
   images: { unoptimized: true }
-  // For user site (SebVivier.github.io) there is NO basePath.
+  // User site (SebVivier.github.io) → no basePath needed.
 };
 module.exports = nextConfig;
