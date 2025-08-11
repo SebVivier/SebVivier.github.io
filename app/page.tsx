@@ -13,7 +13,7 @@ const BRAND = {
   tagline: "Doudous & couvertures cousus main avec amour",
 };
 
-const CONTACT_EMAIL = "contact@atelier-petites-mains.fr"; // change to yours
+const CONTACT_EMAIL = "ambre.trevisan@yahoo.com"; // change to yours
 
 const SOCIALS = {
   instagram: "https://www.instagram.com/ambre7338",
